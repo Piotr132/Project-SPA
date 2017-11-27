@@ -1,0 +1,85 @@
+<div class="col-md-6 col-md-offset-3">
+    <h2 ng-if="!workersAddEditCtrl.isEdit">Dodaj pracownika</h2>
+    <h2 ng-if="workersAddEditCtrl.isEdit">Edytuj pracownika</h2>
+    <div class="alert-wrapper" ng-if="workersAddEditCtrl.apiErrorText !== ''">
+      <div uib-alert class="alert-danger" close="workersAddEditCtrl.onApiAlertClose()">
+        {{workersAddEditCtrl.apiErrorText}}
+      </div>
+    </div>
+    <form name="form" ng-submit="workersAddEditCtrl.submit()" role="form">
+        <div class="form-group" ng-class="{ 'has-error': form.firstName.$dirty && form.firstName.$error.required }">
+            <label for="firstName">Imię</label>
+            <input
+              type="text"
+              name="firstName"
+              id="firstName"
+              class="form-control"
+              ng-model="workersAddEditCtrl.workerData.firstName"
+              required
+            />
+            <span ng-show="form.firstName.$dirty && form.firstName.$error.required" class="help-block">Imię jest wymagane</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.lastName.$dirty && form.lastName.$error.required }">
+            <label for="lastName">Nazwisko</label>
+            <input
+              type="text"
+              name="lastName"
+              id="lastName"
+              class="form-control"
+              ng-model="workersAddEditCtrl.workerData.lastName"
+              required
+            />
+            <span ng-show="form.lastName.$dirty && form.lastName.$error.required" class="help-block">Nazwisko jest wymagane</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.birthday.$dirty && form.birthday.$error.required }">
+            <label for="birthday">Data urodzenia</label>
+            <div class="col-md-12 no-padding">
+                <p class="input-group">
+                  <input
+                    type="text"
+                    name="birthday"
+                    id="birthday"
+                    class="form-control"
+                    ng-model="workersAddEditCtrl.workerData.birthday"
+                    uib-datepicker-popup="{{workersAddEditCtrl.format}}"
+                    is-open="workersAddEditCtrl.datePicker.opened"
+                    close-text="Zamknij"
+                    show-button-bar="false"
+                    required
+                  />
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="workersAddEditCtrl.openDatePicker()"><i class="glyphicon glyphicon-calendar"></i></button>
+                  </span>
+                </p>
+            </div>
+            <span ng-show="form.birthday.$dirty && form.birthday.$error.required" class="help-block">Data urodzenia jest wymagana</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.position.$dirty && form.position.$error.required }">
+            <label for="position">Stanowisko</label>
+            <input
+              type="text"
+              name="position"
+              id="position"
+              class="form-control"
+              ng-model="workersAddEditCtrl.workerData.position"
+              required
+            />
+            <span ng-show="form.position.$dirty && form.position.$error.required" class="help-block">Stanowisko jest wymagane</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.mail.$dirty && form.mail.$error.required }">
+            <label for="mail">Adres e-mail</label>
+            <input
+              type="text"
+              name="mail"
+              id="mail"
+              class="form-control"
+              ng-model="workersAddEditCtrl.workerData.mail"
+              required
+            />
+            <span ng-show="form.mail.$dirty && form.mail.$error.required" class="help-block">Adres e-mail jest wymagany</span>
+        </div>
+        <div class="form-actions">
+            <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Zapisz</button>
+        </div>
+    </form>
+</div>

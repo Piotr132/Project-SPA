@@ -1,0 +1,23 @@
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Login</th>
+        <th>Status</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in loginHistoryCtrl.loginsHistory">
+        <td>{{item.login}}</td>
+        <td class="login-success" ng-if="item.status === 1">
+          Logowanie pomyślne
+        </td>
+        <td  class="login-error"ng-if="item.status === 0">
+          Logowanie niepomyślne
+        </td>
+        <td>{{item.time | date: loginHistoryCtrl.dateFormat}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

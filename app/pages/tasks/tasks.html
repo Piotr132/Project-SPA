@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="alert-wrapper" ng-if="tasksCtrl.messages.length > 0">
+    <div ng-repeat="(key, message) in tasksCtrl.messages" uib-alert ng-class="'alert-' + message.type" close="tasksCtrl.onMessageAlertClose(key)">
+      {{message.message}}
+    </div>
+  </div>
+  <div class="add-button-wrapper">
+    <button type="button" class="btn btn-primary" ng-click="tasksCtrl.goTo('/tasks/add-edit')">Dodaj nowe</button>
+  </div>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Tytuł</th>
+        <th>Opis</th>
+        <th>Lokalizacja</th>
+        <th>Czas startu</th>
+        <th>Czas zakończenia</th>
+        <th>Pracownicy</th>
+        <th>Pow. email (minut przed)</th>
+        <th>Pow. popup (minut przed)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="task in tasksCtrl.tasks">
+        <td>{{task.title}}</td>
+        <td>{{task.description}}</td>
+        <td>{{task.location}}</td>
+        <td>{{task.startDate * 1000 | date: tasksCtrl.dateFormat}}</td>
+        <td>{{task.endDate * 1000 | date: tasksCtrl.dateFormat}}</td>
+        <td><span ng-repeat="attendee in task.attendees">{{attendee.firstName}} {{attendee.lastName}} ({{attendee.mail}})<br /></span></td>
+        <td>{{task.reminderEmail}}</td>
+        <td>{{task.reminderPopup}}</td>
+        <td>
+          <span class="glyphicon glyphicon-edit glyphicon-action" aria-hidden="true" ng-click="tasksCtrl.editTask(task.id)"></span>
+          <span class="glyphicon glyphicon-remove glyphicon-action" aria-hidden="true" ng-click="tasksCtrl.deleteTask(task.id)"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,60 @@
+<div class="col-md-6 col-md-offset-3">
+    <h2>Rejestracja</h2>
+    <div class="alert-wrapper" ng-if="registerCtrl.apiErrorText !== ''">
+      <div uib-alert class="alert-danger" close="registerCtrl.onAlertClose()">
+        {{registerCtrl.apiErrorText}}
+      </div>
+    </div>
+    <form name="form" ng-submit="registerCtrl.register()" role="form">
+        <div class="form-group" ng-class="{ 'has-error': form.login.$dirty && (form.login.$error.required || form.login.$error.minlength) }">
+            <label for="username">Login</label>
+            <input
+              type="text"
+              name="login"
+              id="login"
+              class="form-control"
+              ng-model="registerCtrl.userData.login"
+              ng-minlength="6"
+              required
+            />
+            <span ng-show="form.login.$dirty && form.login.$error.required" class="help-block">Login jest wymagany</span>
+            <span ng-show="form.login.$dirty && form.login.$error.minlength" class="help-block">Login zbyt krótki</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && (form.password.$error.required || form.password.$error.minlength) }">
+            <label for="password">Hasło</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              class="form-control"
+              ng-model="registerCtrl.userData.password"
+              ng-minlength="6"
+              required
+            />
+            <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Hasło jest wymagane</span>
+            <span ng-show="form.password.$dirty && form.password.$error.minlength" class="help-block">Hasło zbyt krótkie</span>
+        </div>
+        <div class="form-group"
+            ng-class="{
+              'has-error': form.passwordConfirm.$dirty && (form.passwordConfirm.$error.required || form.passwordConfirm.$error.minlength) || form.passwordConfirm.$dirty && form.password.$modelValue != form.passwordConfirm.$modelValue
+            }"
+        >
+            <label for="passwordConfirm">Powtórz hasło</label>
+            <input
+              type="password"
+              name="passwordConfirm"
+              id="passwordConfirm"
+              ng-model="registerCtrl.userData.passwordConfirm"
+              ng-minlength="6"
+              class="form-control"
+              required
+            />
+            <span ng-show="form.passwordConfirm.$dirty && form.passwordConfirm.$error.required" class="help-block">Hasło jest wymagane</span>
+            <span ng-show="form.passwordConfirm.$dirty && form.passwordConfirm.$error.minlength" class="help-block">Hasło zbyt krótkie</span>
+            <span ng-show="form.passwordConfirm.$dirty && form.password.$modelValue != form.passwordConfirm.$modelValue" class="help-block">Hasła się nie zgadzają</span>
+        </div>
+        <div class="form-actions">
+            <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Rejestruj</button>
+        </div>
+    </form>
+</div>

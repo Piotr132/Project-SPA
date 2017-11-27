@@ -1,0 +1,35 @@
+<nav class="navbar navbar-default">
+  <div class="container">
+    <a class="navbar-brand" href ng-click="navbarCtrl.goTo('/')">Worker</a>
+
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav nav">
+        <li class="nav-item" ng-class="{'active': navbarCtrl.linkIsActive('/')}">
+          <a class="nav-link" href ng-click="navbarCtrl.goTo('/')">Home</a>
+        </li>
+        <li class="nav-item" ng-class="{'active': navbarCtrl.linkIsActive('/workers')}" ng-if="navbarCtrl.userIsLoggedIn()">
+          <a class="nav-link" href ng-click="navbarCtrl.goTo('/workers')">Pracownicy</a>
+        </li>
+        <li class="nav-item" ng-class="{'active': navbarCtrl.linkIsActive('/tasks')}" ng-if="navbarCtrl.userIsLoggedIn()">
+          <a class="nav-link" href ng-click="navbarCtrl.goTo('/tasks')">Zadania</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav nav navbar-right" ng-if="!navbarCtrl.userIsLoggedIn()">
+        <li class="nav-item" ng-class="{'active': navbarCtrl.linkIsActive('/login')}">
+          <a class="nav-link" href ng-click="navbarCtrl.goTo('/login')">Zaloguj się</a>
+        </li>
+        <li class="nav-item" ng-class="{'active': navbarCtrl.linkIsActive('/register')}">
+          <a class="nav-link" href ng-click="navbarCtrl.goTo('/register')">Rejestracja</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav nav navbar-right" ng-if="navbarCtrl.userIsLoggedIn()">
+        <li class="nav-item" ng-class="{'active': navbarCtrl.linkIsActive('/login-history')}">
+          <a class="nav-link" href ng-click="navbarCtrl.goTo('/login-history')">Historia logowań</a>
+        </li>
+        <li class="nav-item" ng-class="{'active': navbarCtrl.linkIsActive('/logout')}">
+          <a class="nav-link" href ng-click="navbarCtrl.goTo('/logout')">Wyloguj się</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
