@@ -4,7 +4,7 @@
 > Główną funkcją stworzonej aplikacji jest gromadzenie danych o pracownikach z możliwością przydzielania i monitorowania zadań.
 > 
 
-![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYnInj4ooOHwoVt_0VnqKfrxO1vyq9yjEsELGAc5bfkralvpaq)
+![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPNOyJreMtuUwjMeTXaJcgtqrYtRIuSr9F5Br8vtoxPlWVXRz6)
 
 ## Użyte technologie:
 * Aplikacja oparta na frameworku AngularJS w wersji 1.6.1
